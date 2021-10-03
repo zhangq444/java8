@@ -5,7 +5,9 @@ package com.newtouch.java8;
  */
 public class SimpleStream {
 
+    public static void main(String[] args) {
 
+    }
 
 
 
