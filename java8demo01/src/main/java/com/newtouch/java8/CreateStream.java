@@ -14,9 +14,6 @@ public class CreateStream {
         fromValues().forEach(System.out::println);
         fromArrays().forEach(System.out::println);
 
-
-
-
     }
 
     public static Stream<String> fromCollection(){
