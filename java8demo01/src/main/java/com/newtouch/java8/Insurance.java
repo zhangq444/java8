@@ -15,5 +15,4 @@ public class Insurance {
     private String name;
 
 
-
 }

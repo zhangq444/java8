@@ -12,7 +12,7 @@ public class OptionalUsage {
         Optional<Insurance> insurance = Optional.of(new Insurance());
         Optional<Insurance> o = Optional.ofNullable(null);
 
-        Insurance 平安 = insurance.orElse(new Insurance("平安"));
+//        Insurance 平安 = insurance.orElse(new Insurance("平安"));
         Insurance insurance1 = insurance.orElseGet(Insurance::new);
         Insurance insurance2 = insurance.orElseThrow(() -> new RuntimeException("没有对象"));
 
