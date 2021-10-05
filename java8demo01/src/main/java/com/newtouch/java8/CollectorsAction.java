@@ -1,6 +1,7 @@
 package com.newtouch.java8;
 
 import java.util.*;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 /**
@@ -42,14 +43,16 @@ public class CollectorsAction {
     }
 
     public static void getAvageInt() {
-        Optional.ofNullable(menu.stream()
-                .collect(Collectors.averagingInt(Dish::getCalories))
+        Double collect = menu.stream()
+                .collect(Collectors.averagingInt(Dish::getCalories));
+        Optional.ofNullable(collect
         ).ifPresent(System.out::println);
     }
 
     public static void collectorThen() {
-        Optional.ofNullable(menu.stream().collect(Collectors.collectingAndThen(Collectors.averagingInt(Dish::getCalories),
-                a -> "the avage is->" + a))).ifPresent(System.out::println);
+        String collect = menu.stream().collect(Collectors.collectingAndThen(Collectors.averagingInt(Dish::getCalories),
+                a -> "the avage is->" + a));
+        Optional.ofNullable(collect).ifPresent(System.out::println);
     }
 
     public static void counting() {
@@ -58,12 +61,15 @@ public class CollectorsAction {
     }
 
     public static void group01() {
-        Optional.ofNullable(menu.stream().collect(Collectors.groupingBy(Dish::getType))).ifPresent(System.out::println);
+        Map<Dish.Type, List<Dish>> collect = menu.stream().collect(Collectors.groupingBy(Dish::getType));
+        Optional.ofNullable(collect).ifPresent(System.out::println);
     }
 
     public static void group02() {
-        Optional.ofNullable(menu.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.counting()))).ifPresent(System.out::println);
-        Optional.ofNullable(menu.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.averagingInt(Dish::getCalories)))).ifPresent(System.out::println);
+        Map<Dish.Type, Long> collect1 = menu.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.counting()));
+        Optional.ofNullable(collect1).ifPresent(System.out::println);
+        Map<Dish.Type, Double> collect = menu.stream().collect(Collectors.groupingBy(Dish::getType, Collectors.averagingInt(Dish::getCalories)));
+        Optional.ofNullable(collect).ifPresent(System.out::println);
     }
 
     public static void group03(){
